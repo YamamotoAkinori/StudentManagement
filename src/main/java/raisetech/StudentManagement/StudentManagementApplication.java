@@ -22,9 +22,8 @@ public class StudentManagementApplication {
     return repository.search();
   }
 
-  @GetMapping("/studentsCourseList")
+  @GetMapping("/studentsCoursesList")
   public List<StudentsCourses> getStudentsCoursesList() {
     return repository.searchStudentsCourses();
   }
-  //testを開始します。
 }
