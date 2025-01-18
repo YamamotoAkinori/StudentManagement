@@ -1,3 +1,6 @@
+GitHubのパスワード：Wz47driaJiU@mgv
+        アカウント名：l2202670970as@gmail.com
+
 MySQLの動作確認：
 
 　① 始動時：mysql -u root -h localhost --port 3308 -p

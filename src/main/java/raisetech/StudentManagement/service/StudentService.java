@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import raisetech.StudentManagement.data.Student;
 import raisetech.StudentManagement.data.StudentsCourses;
 import raisetech.StudentManagement.repository.StudentRepository;
-
 import java.util.List;
 
 @Service
@@ -22,7 +21,7 @@ public class StudentService {
     return repository.search();
   }
 
-  public List<StudentsCourses> searchStudentsCoursesList() {
+  public List<StudentsCourses> searchStudentsCourseList() {
     return repository.searchStudentsCourses();
   }
 
