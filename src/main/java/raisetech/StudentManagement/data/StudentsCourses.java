@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class StudentsCourses {
 
   private String id;
-  private String studentID;
+  private String studentId;
   private String courseName;
   private LocalDateTime courseStartAt;
   private LocalDateTime courseEndAt;
