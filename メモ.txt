@@ -1,3 +1,8 @@
+MySQLの動作確認：
+
+　① 始動時：mysql -u root -h localhost --port 3308 -p
+
+　② パスワード: **************
 
 データの確認：show databases;
 
