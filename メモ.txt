@@ -1,3 +1,8 @@
+MySQLの動作確認：
+
+　① 始動時：mysql -u root -h localhost --port 3308 -p
+
+　② パスワード: **************
 
 データの確認：show databases;
 
@@ -15,5 +20,11 @@
 　　　　　　　　または
 　　　　　　　INSERT INTO students_courses (id, student_id, course_name, course_start_at, course_end_at)　VALUES
 
+カラム名の確認：SHOW COLUMNS FROM students;　または　SHOW COLUMNS FROM students_courses;
+
 データの訂正、更新：UPDATE students SET または　UPDATE students_courses SET
 　　　　　　　　　　WHERE id = 1;　または C1;
+
+studentsテーブルのid列の変更 : ALTER TABLE students MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
+
+students_coursesテーブルのid列の変更 : ALTER TABLE students_courses MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
