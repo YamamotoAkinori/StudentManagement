@@ -12,8 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 受講生情報を取り扱うサービスです。
- * 受講生の検索や登録・更新処理を行います。
+ * 受講生情報を取り扱うサービスです。受講生の検索や登録・更新処理を行います。
  */
 @Service
 public class StudentService {
@@ -44,7 +43,7 @@ public class StudentService {
    * @param id 受講生ID
    * @return 受講生詳細
    */
-  public  StudentDetail searchStudent(String id) {
+  public StudentDetail searchStudent(String id) {
     Student student = repository.searchStudent(id);
     List<StudentCourse> studentCourse = repository.searchStudentCourse(student.getId());
     return new StudentDetail(student, studentCourse);
