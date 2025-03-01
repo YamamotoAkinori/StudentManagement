@@ -99,7 +99,7 @@ class StudentServiceTest {
     List<StudentCourse> studentCourseList = List.of(studentCourse);
     StudentDetail studentDetail = new StudentDetail(student, studentCourseList);
 
-    sut.registerStudent(studentDetail);
+    sut.updateStudent(studentDetail);
 
     verify(repository, times(1)).updateStudent(student);
     verify(repository, times(1)).updateStudentCourse(studentCourse);
