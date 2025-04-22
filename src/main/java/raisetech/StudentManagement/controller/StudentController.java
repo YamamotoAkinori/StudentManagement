@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +34,10 @@ public class StudentController {
    *
    * @return 受講生詳細一覧(全件)
    */
-  @Operation(summary = "一覧検索", description = "受講生の一覧を検索します。")
+  @Operation(summary = "受講生一覧検索", description = "受講生の一覧を検索します。")
   @GetMapping("/studentList")
-  public List<StudentDetail> getStudentList() { //throws TestException
+  public List<StudentDetail> getStudentList() {
     return service.searchStudentList();
-//    throw new TestException(
-//        "現在このAPIは利用できません。URLは「studentList」ではなく「students」を利用してください。");
   }
 
   /**
@@ -81,8 +80,13 @@ public class StudentController {
     return ResponseEntity.ok("更新処理が成功しました。");
   }
 
-//  @ExceptionHandler(TestException.class)
-//  public ResponseEntity<String> handleTestException(TestException ex) {
-//    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-//  }
+  @GetMapping("/exception")
+  public ResponseEntity<String> throwException() throws NotFoundException {
+    throw new NotFoundException("このAPIは現在利用できません。古いURLとなっています。");
+  }
+
+  @ExceptionHandler(TestException.class)
+  public ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
+    return ResponseEntity.badRequest().body(ex.getMessage());
+  }
 }
