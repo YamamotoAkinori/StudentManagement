@@ -1,6 +1,7 @@
 package raisetech.StudentManagement.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.models.responses.ApiResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @Validated
 @RestController
+@ControllerAdvice
 public class StudentController {
 
   private StudentService service;
@@ -62,7 +64,7 @@ public class StudentController {
   @Operation(summary = "受講生登録", description = "受講生を登録します。")
   @PostMapping("/registerStudent")
   public ResponseEntity<StudentDetail> registerStudent(
-        @RequestBody @Valid StudentDetail studentDetail) {
+          @RequestBody @Valid StudentDetail studentDetail) {
     StudentDetail responseStudentDetail = service.registerStudent(studentDetail);
     return ResponseEntity.ok(responseStudentDetail);
   }
@@ -81,8 +83,8 @@ public class StudentController {
   }
 
   @GetMapping("/exception")
-  public ResponseEntity<String> throwException() throws NotFoundException {
-    throw new NotFoundException("このAPIは現在利用できません。古いURLとなっています。");
+  public ResponseEntity<String> throwException() {
+    return ResponseEntity.badRequest().body("このAPIは現在利用できません。古いURLとなっています。");
   }
 
   @ExceptionHandler(TestException.class)

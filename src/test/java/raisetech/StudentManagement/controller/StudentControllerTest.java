@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import raisetech.StudentManagement.data.Student;
 import raisetech.StudentManagement.domain.StudentDetail;
 import raisetech.StudentManagement.service.StudentService;
@@ -19,13 +20,11 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(StudentController.class)
-@Import(GlobalExceptionHandler.class)
 class StudentControllerTest {
 
   @Autowired
@@ -64,7 +63,7 @@ class StudentControllerTest {
                    "student": {
                        "name" : "江並康介",
                        "kanaName" : "エナミ",
-                       "nickName" : "コウジ",
+                       "nickname" : "コウジ",
                        "email" : "test@example.com",
                        "area" : "奈良",
                        "age" : "36",
@@ -87,14 +86,14 @@ class StudentControllerTest {
   @Test
   void 受講生詳細の更新が実行できて空で返ってくること() throws Exception{
     // リクエストデータは適切に構成して、入力チェックの検証も兼ねている。
-    mockMvc.perform(post("/updateStudent").contentType(MediaType.APPLICATION_JSON).content(
+    mockMvc.perform(put("/updateStudent").contentType(MediaType.APPLICATION_JSON).content(
                     """
                         {
                            "student": {
                                "id" : "12",
                                "name" : "江並康介",
                                "kanaName" : "エナミ",
-                               "nickName" : "コウジ",
+                               "nickname" : "コウジ",
                                "email" : "test@example.com",
                                "area" : "奈良",
                                "age" : "36",
