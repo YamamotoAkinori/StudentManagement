@@ -12,21 +12,16 @@ import java.time.LocalDateTime;
 @Setter
 public class StudentCourse {
 
-  @NotBlank
   @Pattern(regexp = "^\\d+$")
   private String id;
 
-  @NotBlank
   @Pattern(regexp = "^\\d+$")
   private String studentId;
 
   @NotBlank
   private String courseName;
 
-  @NotBlank
   private LocalDateTime courseStartAt;
-
-  @NotBlank
   private LocalDateTime courseEndAt;
 
 }
