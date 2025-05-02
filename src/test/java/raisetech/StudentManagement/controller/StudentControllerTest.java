@@ -4,7 +4,11 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -35,7 +39,7 @@ class StudentControllerTest {
 
   private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
-  @Test
+  @Test()
   void 受講生詳細の一覧検索が実行できて空のリストが返ってくること() throws Exception {
     mockMvc.perform(get("/studentList"))
         .andExpect(status().isOk())
