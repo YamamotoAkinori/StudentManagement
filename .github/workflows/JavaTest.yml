@@ -52,12 +52,10 @@ jobs:
         envs: DEST_PATH
         script: |
           sudo yum update -y
-          if [ ! -f /etc/sysconfig/StudentManagement ]; then
-            echo 'JAVA_OPTS=-Xms256m -Xmx512m' | sudo tee /etc/sysconfig/StudentManagement
-          fi
-          
-          if [ -f /etc/systemd/system/StudentManagement.service ]; then
-          cat <<EOL | sudo tee /etc/systemd/system/StudentManagement.service > /dev/null
+           if [ -f /etc/systemd/system/StudentManagement.service ]; then
+            echo "already exists Service File"
+          else
+          cat <<EOL | sudo tee /etc/systemd/system/StudentManagement.service
           [Unit]
           Description=StudentManagement App
           After=network.target
