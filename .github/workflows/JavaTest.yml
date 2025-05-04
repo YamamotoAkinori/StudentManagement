@@ -58,6 +58,7 @@ jobs:
           cat <<EOL | sudo tee /etc/systemd/system/StudentManagement.service
           [Unit]
           Description=StudentManagement App
+          After=network.target
           
           [Service]
           ExecStart=java -jar ${DEST_PATH}
