@@ -36,4 +36,21 @@ public class Student {
 
   private String remark;
   private boolean isDeleted;
+
+
+  public Student(String name, String kanaName, String nickname,
+                 String email, String area, int age, String sex,
+                 String remark, boolean isDeleted) {
+    this.name = name;
+    this.kanaName = kanaName;
+    this.nickname = nickname;
+    this.email = email;
+    this.area = area;
+    this.age = age;
+    this.sex = sex;
+    this.remark = remark;
+    this.isDeleted = isDeleted;
+  }
+  public Student() {
+  }
 }
