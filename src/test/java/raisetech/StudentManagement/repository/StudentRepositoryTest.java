@@ -25,7 +25,13 @@ class StudentRepositoryTest {
     Student actual = sut.searchStudent("1");
 
     assertThat(actual).isNotNull();
-    assertThat(actual.getName()).isEqualTo("山田太郎"); // data.sqlで指定
+    assertThat(actual.getName()).isEqualTo("山田太郎");
+    assertThat(actual.getKanaName()).isEqualTo("ヤマダタロウ");
+    assertThat(actual.getNickname()).isEqualTo("タロー");
+    assertThat(actual.getEmail()).isEqualTo("taro.yamada@example.com");
+    assertThat(actual.getArea()).isEqualTo("東京");
+    assertThat(actual.getAge()).isEqualTo(25);
+    assertThat(actual.getSex()).isEqualTo("男性");
   }
 
   @Test
