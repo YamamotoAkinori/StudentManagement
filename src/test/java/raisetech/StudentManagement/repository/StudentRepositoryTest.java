@@ -32,6 +32,9 @@ class StudentRepositoryTest {
   void 受講生コース情報の全件検索が行えること() {
     List<StudentCourse> actual = sut.searchStudentCourseList();
     assertThat(actual.size()).isEqualTo(5);
+
+    assertThat(actual).isNotEmpty();
+    assertThat(actual.get(0).getCourseName()).isEqualTo("Javaコース");
   }
 
   @Test
@@ -44,16 +47,17 @@ class StudentRepositoryTest {
 
   @Test
   void 受講生の登録が行えること() {
-    Student student = new Student();
-    student.setName("江並公史");
-    student.setKanaName("エナミコウジ");
-    student.setNickname("エナミ");
-    student.setEmail("test@example.com");
-    student.setArea("奈良県");
-    student.setAge(36);
-    student.setSex("男性");
-    student.setRemark("");
-    student.setDeleted(false);
+    Student student = new Student(
+      "江並公史",
+      "エナミコウジ",
+      "エナミ",
+      "test@example.com",
+      "奈良県",
+      36,
+      "男性",
+      "",
+      false
+    );
 
     sut.registerStudent(student);
 
